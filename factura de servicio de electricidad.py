@@ -15,26 +15,33 @@ menu()
 
 
 opcion = int(input("ingrese una opcion del menu (en numero): "))
-lectura_anterior = int(input("ingrese lectura periodo anterior: "))
-lectura_actual = int(input("ingrese lectura periodo actual: "))
-consumo = lectura_actual - lectura_anterior
+
+def salir():
+    if opcion == 3:
+        print("usted decidio salir. gracias por utilizar el programa")
+# datos
+precio_kw = [4.47,7.54]
+cargo_fijo=[61.44,85.22]
+impuesto=1.21
+alum_pb=[950,1010]
+ing_bruto=0.25
+iva=1.21
+# opciones del programa
 if opcion == 1:
     print("tarifa residencial")
     
-    precio_kw = 4.47
+    lectura_anterior =int(input("ingrese lectura periodo anterior: "))
+    lectura_actual =int(input("ingrese lectura periodo actual: "))
+    consumo = lectura_actual - lectura_anterior
+    subtotal = cargo_fijo[0] + impuesto + alum_pb[0]
 
-    cargos = {"cargo fijo" : 61.44 , "impuesto" : 1.21 , "Alum PB" : 950}
-
-    for i in cargos:
-        subtotal = (cargos[i])
-
-    monto = precio_kw * consumo + subtotal
+    monto = precio_kw[0] * consumo + subtotal
 
     monto_mens = monto / 2
 
     if consumo <= 400:
         bonif = 250
-        tot_mens = monto_mens - bonif
+        tot_mens = round(monto_mens - bonif,2)
 
 #monto_mens = monto mensual
 #tot_mens = total mensual
@@ -48,28 +55,26 @@ if opcion == 1:
 
 
 elif opcion == 2:
-    print("tarifa comercial")
+   print("tarifa comercial")
+    
+   lectura_anterior =int(input("ingrese lectura periodo anterior: "))
+   lectura_actual =int(input("ingrese lectura periodo actual: "))
+   consumo = lectura_actual - lectura_anterior
+   
+   subtotal = cargo_fijo[1] + alum_pb[1] + iva + ing_bruto
 
-    precio_kw = 7.54
+   monto = precio_kw[1] * consumo + subtotal
 
-    cargos = {"cargo fijo" :85.22 , "ing bruto" : 0.25 , "IVA" : 1.21 , "alum pb" : 1010}
+   monto_mens = monto / 2
 
-    for i in cargos:
-        subtotal = (cargos[i])
-
-    monto = precio_kw * consumo + subtotal
-
-    monto_mens = monto / 2
-
-    if consumo <= 500:
+   if consumo <= 500:
         bonif = 180
-        tot_mens = monto_mens - bonif
+        tot_mens = round(monto_mens - bonif,2)
 
 
         print(f"su factura es de {consumo}kw, tiene ahorro y debe abonar ${tot_mens}")
 
-    else:
+   else:
         print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
-
 else:
-    print("usted decidio salir. gracias por utilizar el programa")
+   salir() 
