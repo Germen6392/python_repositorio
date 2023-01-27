@@ -23,8 +23,9 @@ def salir():
 def ahorro(opcion):
     if opcion == 1:
         if consumo <= 400:
-            bonif = 250
-            tot_mens = round(monto_mens - bonif,2)
+            bonif = 250 # bonif = bonificacion
+            tot_mens = round(monto_mens - bonif,2)  # tot_mens = total mensual
+
             print(f"su factura es de {consumo}kw, tiene ahorro y debe abonar ${tot_mens}")
         else:
             print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
@@ -36,7 +37,6 @@ def ahorro(opcion):
         else:
             print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
    
-
 # datos
 precio_kw = [4.47,7.54]
 cargo_fijo=[61.44,85.22]
@@ -44,6 +44,7 @@ impuesto=1.21
 alum_pb=[950,1010]
 ing_bruto=0.25
 iva=1.21
+
 # opciones del programa
 if opcion == 1:
     print("tarifa residencial")
@@ -55,13 +56,10 @@ if opcion == 1:
 
     monto = precio_kw[0] * consumo + subtotal
 
-    monto_mens = monto / 2
+    monto_mens = monto / 2 #monto_mens = monto mensual
 
     tot_mens = ahorro(1)
 
-#monto_mens = monto mensual
-#tot_mens = total mensual
-#bonif = bonificacion
    
    
 elif opcion == 2:
