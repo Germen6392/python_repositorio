@@ -1,4 +1,4 @@
-print("Factura de electricidad")
+print("Factura de electricidad") # Titulo
 
 
 def menu():
@@ -19,6 +19,24 @@ opcion = int(input("ingrese una opcion del menu (en numero): "))
 def salir():
     if opcion == 3:
         print("usted decidio salir. gracias por utilizar el programa")
+
+def ahorro(opcion):
+    if opcion == 1:
+        if consumo <= 400:
+            bonif = 250
+            tot_mens = round(monto_mens - bonif,2)
+            print(f"su factura es de {consumo}kw, tiene ahorro y debe abonar ${tot_mens}")
+        else:
+            print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
+    else:
+        if consumo <= 500:
+            bonif = 180
+            tot_mens = round(monto_mens - bonif,2)
+            print(f"su factura es de {consumo}kw, tiene ahorro y debe abonar ${tot_mens}")
+        else:
+            print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
+   
+
 # datos
 precio_kw = [4.47,7.54]
 cargo_fijo=[61.44,85.22]
@@ -39,21 +57,13 @@ if opcion == 1:
 
     monto_mens = monto / 2
 
-    if consumo <= 400:
-        bonif = 250
-        tot_mens = round(monto_mens - bonif,2)
+    tot_mens = ahorro(1)
 
 #monto_mens = monto mensual
 #tot_mens = total mensual
 #bonif = bonificacion
-
-    
-        print(f"su factura es de {consumo}kw, tiene ahorro y debe abonar ${tot_mens}")
-
-    else:
-        print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
-
-
+   
+   
 elif opcion == 2:
    print("tarifa comercial")
     
@@ -67,14 +77,6 @@ elif opcion == 2:
 
    monto_mens = monto / 2
 
-   if consumo <= 500:
-        bonif = 180
-        tot_mens = round(monto_mens - bonif,2)
-
-
-        print(f"su factura es de {consumo}kw, tiene ahorro y debe abonar ${tot_mens}")
-
-   else:
-        print(f"su factura es de {consumo}kw, esta excedido y debe abonar ${monto_mens}")
+   tot_mens = ahorro(2)
 else:
    salir() 
