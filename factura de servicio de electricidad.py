@@ -10,9 +10,7 @@ def menu():
 menu()
 
 
-#el periodo que se toma entre lecturas es bimestral pero despues se facturara mensual
-#es valido en tarifa comercial o residencial
-
+# es valido en tarifa comercial o residencial
 
 opcion = int(input("ingrese una opcion del menu (en numero): "))
 
@@ -52,15 +50,10 @@ if opcion == 1:
     lectura_anterior =int(input("ingrese lectura periodo anterior: "))
     lectura_actual =int(input("ingrese lectura periodo actual: "))
     consumo = lectura_actual - lectura_anterior
-    subtotal = cargo_fijo[0] + impuesto + alum_pb[0]
-
-    monto = precio_kw[0] * consumo + subtotal
-
-    monto_mens = monto / 2 #monto_mens = monto mensual
-
+    monto = precio_kw[0] * consumo + cargo_fijo[0] + impuesto + alum_pb[0]
+    monto_mens = monto / 2 #monto_mens = monto mensual 
+#el periodo que se toma entre lecturas es bimestral pero despues se facturara mensual
     tot_mens = ahorro(1)
-
-   
    
 elif opcion == 2:
    print("tarifa comercial")
@@ -68,13 +61,8 @@ elif opcion == 2:
    lectura_anterior =int(input("ingrese lectura periodo anterior: "))
    lectura_actual =int(input("ingrese lectura periodo actual: "))
    consumo = lectura_actual - lectura_anterior
-   
-   subtotal = cargo_fijo[1] + alum_pb[1] + iva + ing_bruto
-
-   monto = precio_kw[1] * consumo + subtotal
-
+   monto = precio_kw[1] * consumo + cargo_fijo[1] + alum_pb[1] + iva + ing_bruto
    monto_mens = monto / 2
-
    tot_mens = ahorro(2)
 else:
    salir() 
